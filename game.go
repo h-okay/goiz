@@ -1,7 +1,11 @@
 package main
 
 import (
+	"bufio"
+	"context"
 	"fmt"
+	"os"
+	"strings"
 	"time"
 )
 
@@ -23,29 +27,38 @@ type Quiz struct {
 
 func Play(quiz Quiz) {
 	fmt.Println("You have", quiz.timer.secondsPerQuestion, "seconds per question.")
+	input := make(chan string, len(quiz.questions))
 
 	for _, question := range quiz.questions {
-		timer := time.NewTimer(time.Duration(quiz.timer.secondsPerQuestion) * time.Second)
-		fmt.Printf("Problem #%d: %s = ", question.id, question.question)
+		ctx, cancel := context.WithTimeout(
+			context.Background(),
+			time.Duration(quiz.timer.secondsPerQuestion)*time.Second,
+		)
+		defer cancel()
 
-		answerCh := make(chan string)
-		go func() {
-			var answer string
-			fmt.Scanf("%s\n", &answer)
-			answerCh <- answer
-		}()
+		fmt.Printf("Problem #%d: %s = ", question.id, question.question)
+		go getInput(input)
 
 		select {
-		case <-timer.C:
-			fmt.Println("Time limit exceed!")
-			continue
-		case answer := <-answerCh:
+		case <-ctx.Done():
+			fmt.Println("Time limit exceeded!")
+		case answer := <-input:
 			if answer == question.answer {
 				quiz.score++
-				fmt.Println("Correct!")
 			}
 		}
 	}
 
 	fmt.Printf("You scored %d out of %d.\n", quiz.score, len(quiz.questions))
+}
+
+func getInput(input chan string) {
+	in := bufio.NewReader(os.Stdin)
+	for {
+		result, err := in.ReadString('\n')
+		if err != nil {
+			return
+		}
+		input <- strings.TrimSpace(result)
+	}
 }
