@@ -4,21 +4,13 @@
     <p align="center">Engaging quizes in your terminal.</p>
 </p>
 
-## 🔗 Quick Links
-
-- [📍 Overview](#📍-overview)
-- [🚀 Getting Started](#🚀-getting-started)
-  - [⚙️ Installation](#⚙️-installation)
-  - [🤖 Running goiz](#🤖-running-goiz)
-- [📄 License](#📄-license)
-
 ## 📍 Overview
 
 `Goiz` delivers an interactive quiz experience, challenging players to answer questions within set time constraints.
 
 ## 🚀 Getting Started
 
-**_Requirements_**
+**Requirements**
 
 Ensure you have the following dependencies installed on your system:
 
@@ -35,11 +27,11 @@ go build -o goiz
 
 ### 🤖 Running goiz
 
-| Paramteter | Type   | Description                                                                                  | Default      |     |
-| ---------- | ------ | -------------------------------------------------------------------------------------------- | ------------ | --- |
-| amount     | int    | amount of questions to be loaded from the csv file, if invalid all file contents are loaded. | 5            |     |
-| csv        | string | a csv file in the format of 'question,answer'                                                | problems.csv |     |
-| time       | int    | time limit per question, in seconds                                                          | 3            |     |
+| Paramteter | Type   | Description                                                                                  | Default      |
+| ---------- | ------ | -------------------------------------------------------------------------------------------- | ------------ |
+| amount     | int    | amount of questions to be loaded from the csv file, if invalid all file contents are loaded. | 5            |
+| csv        | string | a csv file in the format of 'question,answer'                                                | problems.csv |
+| time       | int    | time limit per question, in seconds                                                          | 3            |
 
 ```sh
 ./goiz -csv=my.csv -amount=3 -time=5
@@ -50,5 +42,3 @@ go build -o goiz
 ## 📄 License
 
 This project is protected under the [MIT](https://choosealicense.com/licenses/mit/) License. For more details, refer to the [LICENCE](LICENCE) file.
-
-[**Return**](#🔗-quick-links)
