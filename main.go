@@ -8,8 +8,8 @@ import (
 
 func main() {
 	csv := flag.String("csv", "problems.csv", "a csv file in the format of 'question,answer'")
-	secondsPerQuestion := flag.Int("time", 1, "time limit per question, in seconds")
-	amountOfQuestions := flag.Int("amount", 3, "amount of questions to be loaded from the csv file, if invalid all file contents are loaded.")
+	secondsPerQuestion := flag.Int("time", 3, "time limit per question, in seconds")
+	amountOfQuestions := flag.Int("amount", 5, "amount of questions to be loaded from the csv file, if invalid all file contents are loaded.")
 	flag.Parse()
 
 	data, err := LoadFile(LoadOptions{filepath: *csv})
