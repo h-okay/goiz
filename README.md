@@ -39,8 +39,6 @@ For pre-built binaries check [releases](https://github.com/h-okay/goiz/releases)
 ./goiz -csv=my.csv -amount=3 -time=5
 ```
 
----
-
 ## 📄 License
 
 This project is protected under the [MIT](https://choosealicense.com/licenses/mit/) License. For more details, refer to the [LICENCE](LICENCE) file.
