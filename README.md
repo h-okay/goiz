@@ -25,6 +25,8 @@ go build -o goiz
 ./goiz --help
 ```
 
+For pre-built binaries check [releases](https://github.com/h-okay/goiz/releases).
+
 ### 🤖 Running goiz
 
 | Paramteter | Type   | Description                                                                                  | Default      |
